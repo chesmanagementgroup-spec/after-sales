@@ -8,7 +8,7 @@
     :root{
       --bg:#0b1020; --card:#121a33; --muted:#9aa6c3; --text:#e8eeff;
       --line:rgba(255,255,255,.08); --btn:#1f2a55; --btn2:#26346b;
-      --ok:#20c997; --warn:#ffcc00; --danger:#ff6b6b; --radius:16px;
+      --ok:#20c997; --warn:#ffcc00; --radius:16px;
     }
     *{box-sizing:border-box}
     body{
@@ -33,7 +33,7 @@
     }
     .lang button.active{background:rgba(80,120,255,.22);}
     h1{margin:0; font-size:20px; letter-spacing:.2px}
-    .sub{margin-top:6px; color:var(--muted); font-size:13px; line-height:1.35; max-width:820px}
+    .sub{margin-top:6px; color:var(--muted); font-size:13px; line-height:1.35; max-width:860px}
     .toolbar{
       display:flex; gap:10px; flex-wrap:wrap; align-items:center;
       padding:14px 18px 18px; max-width:1100px; margin:0 auto;
@@ -96,8 +96,8 @@
         <div class="sub" id="subtitle"></div>
       </div>
       <div class="lang" aria-label="Language switch">
-        <button id="btnZh" type="button">中文</button>
         <button id="btnEn" type="button">EN</button>
+        <button id="btnZh" type="button">中文</button>
       </div>
     </div>
   </header>
@@ -119,34 +119,13 @@
   <div class="toast" id="toast"></div>
 
 <script>
-const DATA = [{"supplier": "", "link": "", "emails": [], "email_raw": "", "phone_disp": "", "phone_tel": "", "notes": ""}, {"supplier": "B+S", "link": "https://bscommercialkitchens.com/request-a-warranty-service-call/", "emails": ["clientservices@bscommercialkitchens.com", "spareparts@bscommercialkitchens.com"], "email_raw": "clientservices@bscommercialkitchens.com and spareparts@bscommercialkitchens.com", "phone_disp": "P: +61 3 9469 4754", "phone_tel": "+61394694754", "notes": "EMAIL only"}, {"supplier": "BIRKO / ZIP", "link": "https://www.zipwater.com/book-a-service", "emails": ["services@zipwater.com"], "email_raw": "services@zipwater.com", "phone_disp": "1800 460 222", "phone_tel": "1800460222", "notes": "email only"}, {"supplier": "BROMIC", "link": "https://booking.mendrhub.com/?tenantid=ca54bc84-448c-44d6-8625-60853b6fd8c0&tid=13101219-4e99-4aa1-9184-7560dd1bc280", "emails": ["service@bromic.com"], "email_raw": "service@bromic.com", "phone_disp": "02 9426 5222", "phone_tel": "0294265222", "notes": "email only"}, {"supplier": "CMT", "link": "https://coffeemachinetechnologies.com.au/service/", "emails": ["ops@coffeemachinetechnologies.com.au"], "email_raw": "ops@coffeemachinetechnologies.com.au", "phone_disp": "phone +61420 680 861", "phone_tel": "+61420680861", "notes": ""}, {"supplier": "COMCATER", "link": "https://www.comcater.com.au/service/", "emails": ["service@comcater.com.au"], "email_raw": "service@comcater.com.au", "phone_disp": "1800 810 161.", "phone_tel": "1800810161", "notes": ""}, {"supplier": "FSM", "link": "https://fsm-pl.com.au/book-a-service/", "emails": ["service@fsm-pl.com.au"], "email_raw": "FSM Service <service@fsm-pl.com.au>", "phone_disp": "", "phone_tel": "", "notes": ""}, {"supplier": "HOSHIZAKI", "link": "https://hoshizaki.com.au/warranty-request/", "emails": ["lancerservice@lancerworldwide.com"], "email_raw": "lancerservice@lancerworldwide.com", "phone_disp": "1300 551 361", "phone_tel": "1300551361", "notes": ""}, {"supplier": "ICE", "link": "https://www.internationalcatering.com.au/warranty-claim/", "emails": ["Tracey@InternationalCatering.com.au"], "email_raw": "Tracey@InternationalCatering.com.au", "phone_disp": "P: +612 8372 0800", "phone_tel": "+61283720800", "notes": ""}, {"supplier": "MEIKO", "link": "https://www.meiko.com/en-au/service/book-a-service", "emails": ["service@meiko.com.au"], "email_raw": "service@meiko.com.au", "phone_disp": "1300 562 500", "phone_tel": "1300562500", "notes": ""}, {"supplier": "MIDDLEBY", "link": "https://booking.mendrhub.com/?tenantid=13101219-4e99-4aa1-9184-7560dd1bc280&tid=3cf0b526-5f86-42d8-815b-2ad22f0ce67a", "emails": ["service@middleby.com.au"], "email_raw": "service@middleby.com.au", "phone_disp": "P +61 2 9604 7333 | 1800 013 123", "phone_tel": "+612960473331800013123", "notes": ""}, {"supplier": "MOFFAT", "link": "https://www.moffat.com.au/lodge-service-booking-form", "emails": ["callcentre@moffat.com.au"], "email_raw": "callcentre@moffat.com.au", "phone_disp": "1300 264 217", "phone_tel": "1300264217", "notes": "submission either email or website not both"}, {"supplier": "PANASONIC / HUSSMAN", "link": "https://hussmann.com.au/support/warranty/", "emails": ["support.au@hussmann.com"], "email_raw": "support.au@hussmann.com", "phone_disp": "", "phone_tel": "", "notes": "email only"}, {"supplier": "ROBAND", "link": "https://www.roband.com.au/warranty-request/", "emails": ["spares@roband.com.au"], "email_raw": "spares@roband.com.au", "phone_disp": "1800 268 848", "phone_tel": "1800268848", "notes": "email or phone or online form- mostly email"}, {"supplier": "ROBOT COUPE", "link": "https://robotcoupe.au/", "emails": ["Services@robotcoupe.com.au"], "email_raw": "Services@robotcoupe.com.au", "phone_disp": "1800 762 682", "phone_tel": "1800762682", "notes": "back to base warranty -ask customer to book as cc details needed"}, {"supplier": "SCOTS ICE", "link": "", "emails": ["service@scotsice.com.au"], "email_raw": "service@scotsice.com.au", "phone_disp": "1800 222 460 | (02) 9684 5666", "phone_tel": "18002224600296845666", "notes": "EMAIL"}, {"supplier": "SIMCO", "link": "https://simcogroup.com.au/support", "emails": ["service@simcogroup.com.au", "jenny@simcogroup.com.au"], "email_raw": "service@simcogroup.com.au and jenny@simcogroup.com.au", "phone_disp": "(02) 8530 7696 or 1300 883 888", "phone_tel": "02853076961300883888", "notes": "all Simco service request must attach picking slip in the email"}, {"supplier": "SKOPE", "link": "https://booking.mendrhub.com/?tenantid=e32a23e5-8591-4f18-84db-c3dcafadc070&tid=ca54bc84-448c-44d6-8625-60853b6fd8c0", "emails": ["service.ssa@skopeservices.com.au"], "email_raw": "service.ssa@skopeservices.com.au", "phone_disp": "", "phone_tel": "", "notes": "EMAIL only as cc details needed"}, {"supplier": "STODDART", "link": "https://customerservice.stoddart.com.au/s/", "emails": ["service@stoddart.com.au"], "email_raw": "service@stoddart.com.au", "phone_disp": "1300 307 289", "phone_tel": "1300307289", "notes": ""}, {"supplier": "UNOX", "link": "email only", "emails": ["service@unoxaustralia.com.au"], "email_raw": "service@unoxaustralia.com.au", "phone_disp": "P. 03 9876 0803", "phone_tel": "0398760803", "notes": "service app can be downloadable by cust"}, {"supplier": "UROPA", "link": "https://booking.mendrhub.com/?tenantid=0d95fb74-2828-43f0-9108-b91c9f874190&tid=0d95fb74-2828-43f0-9108-b91c9f874190", "emails": ["Warranties@Uropa.com.au"], "email_raw": "Warranties@Uropa.com.au", "phone_disp": "1300 225 960", "phone_tel": "1300225960", "notes": "cust must submit online form"}
-, {"supplier": "WILLIAM REFRIGERATION", "link": "", "emails": ["customersupport@williamsref.com.au"], "email_raw": "customersupport@williamsref.com.au", "phone_disp": "", "phone_tel": "", "notes": "EMAIL"}, {"supplier": "WINTERHALTER", "link": "no website", "emails": ["service@winterhalter.com.au"], "email_raw": "service@winterhalter.com.au", "phone_disp": "02 9645 3221", "phone_tel": "0296453221", "notes": "EMAIL OR CALL only"}];
+const DATA = [{"supplier": "B+S", "link": "https://bscommercialkitchens.com/request-a-warranty-service-call/", "emails": ["clientservices@bscommercialkitchens.com", "spareparts@bscommercialkitchens.com"], "email_raw": "clientservices@bscommercialkitchens.com and spareparts@bscommercialkitchens.com", "phone_disp": "P: +61 3 9469 4754", "phone_tel": "+61394694754", "notes": "EMAIL only"}, {"supplier": "BIRKO / ZIP", "link": "https://www.zipwater.com/book-a-service", "emails": ["services@zipwater.com"], "email_raw": "services@zipwater.com", "phone_disp": "1800 460 222", "phone_tel": "1800460222", "notes": "email only"}, {"supplier": "BROMIC", "link": "https://booking.mendrhub.com/?tenantid=ca54bc84-448c-44d6-8625-60853b6fd8c0&tid=13101219-4e99-4aa1-9184-7560dd1bc280", "emails": ["service@bromic.com"], "email_raw": "service@bromic.com", "phone_disp": "02 9426 5222", "phone_tel": "0294265222", "notes": "email only"}, {"supplier": "CMT", "link": "https://coffeemachinetechnologies.com.au/service/", "emails": ["ops@coffeemachinetechnologies.com.au"], "email_raw": "ops@coffeemachinetechnologies.com.au", "phone_disp": "phone +61420 680 861", "phone_tel": "+61420680861", "notes": ""}, {"supplier": "COMCATER", "link": "https://www.comcater.com.au/service/", "emails": ["service@comcater.com.au"], "email_raw": "service@comcater.com.au", "phone_disp": "1800 810 161.", "phone_tel": "1800810161", "notes": ""}, {"supplier": "FSM", "link": "https://fsm-pl.com.au/book-a-service/", "emails": ["service@fsm-pl.com.au"], "email_raw": "FSM Service <service@fsm-pl.com.au>", "phone_disp": "", "phone_tel": "", "notes": ""}, {"supplier": "HOSHIZAKI", "link": "https://hoshizaki.com.au/warranty-request/", "emails": ["lancerservice@lancerworldwide.com"], "email_raw": "lancerservice@lancerworldwide.com", "phone_disp": "1300 551 361", "phone_tel": "1300551361", "notes": ""}, {"supplier": "ICE", "link": "https://www.internationalcatering.com.au/warranty-claim/", "emails": ["Tracey@InternationalCatering.com.au"], "email_raw": "Tracey@InternationalCatering.com.au", "phone_disp": "P: +612 8372 0800", "phone_tel": "+61283720800", "notes": ""}, {"supplier": "MEIKO", "link": "https://www.meiko.com/en-au/service/book-a-service", "emails": ["service@meiko.com.au"], "email_raw": "service@meiko.com.au", "phone_disp": "1300 562 500", "phone_tel": "1300562500", "notes": ""}, {"supplier": "MIDDLEBY", "link": "https://booking.mendrhub.com/?tenantid=13101219-4e99-4aa1-9184-7560dd1bc280&tid=3cf0b526-5f86-42d8-815b-2ad22f0ce67a", "emails": ["service@middleby.com.au"], "email_raw": "service@middleby.com.au", "phone_disp": "P +61 2 9604 7333 | 1800 013 123", "phone_tel": "+612960473331800013123", "notes": ""}, {"supplier": "MOFFAT", "link": "https://www.moffat.com.au/lodge-service-booking-form", "emails": ["callcentre@moffat.com.au"], "email_raw": "callcentre@moffat.com.au", "phone_disp": "1300 264 217", "phone_tel": "1300264217", "notes": "submission either email or website not both"}, {"supplier": "PANASONIC / HUSSMAN", "link": "https://hussmann.com.au/support/warranty/", "emails": ["support.au@hussmann.com"], "email_raw": "support.au@hussmann.com", "phone_disp": "", "phone_tel": "", "notes": "email only"}, {"supplier": "ROBAND", "link": "https://www.roband.com.au/warranty-request/", "emails": ["spares@roband.com.au"], "email_raw": "spares@roband.com.au", "phone_disp": "1800 268 848", "phone_tel": "1800268848", "notes": "email or phone or online form- mostly email"}, {"supplier": "ROBOT COUPE", "link": "https://robotcoupe.au/", "emails": ["Services@robotcoupe.com.au"], "email_raw": "Services@robotcoupe.com.au", "phone_disp": "1800 762 682", "phone_tel": "1800762682", "notes": "back to base warranty -ask customer to book as cc details needed"}, {"supplier": "SCOTS ICE", "link": "", "emails": ["service@scotsice.com.au"], "email_raw": "service@scotsice.com.au", "phone_disp": "1800 222 460 | (02) 9684 5666", "phone_tel": "18002224600296845666", "notes": "EMAIL"}, {"supplier": "SIMCO", "link": "https://simcogroup.com.au/support", "emails": ["service@simcogroup.com.au", "jenny@simcogroup.com.au"], "email_raw": "service@simcogroup.com.au and jenny@simcogroup.com.au", "phone_disp": "(02) 8530 7696 or 1300 883 888", "phone_tel": "02853076961300883888", "notes": "all Simco service request must attach picking slip in the email"}, {"supplier": "SKOPE", "link": "https://booking.mendrhub.com/?tenantid=e32a23e5-8591-4f18-84db-c3dcafadc070&tid=ca54bc84-448c-44d6-8625-60853b6fd8c0", "emails": ["service.ssa@skopeservices.com.au"], "email_raw": "service.ssa@skopeservices.com.au", "phone_disp": "", "phone_tel": "", "notes": "EMAIL only as cc details needed"}, {"supplier": "STODDART", "link": "https://customerservice.stoddart.com.au/s/", "emails": ["service@stoddart.com.au"], "email_raw": "service@stoddart.com.au", "phone_disp": "1300 307 289", "phone_tel": "1300307289", "notes": ""}, {"supplier": "UNOX", "link": "https://www.unox.com/au_au/support/warranty/-unox-warranty/", "emails": ["service@unoxaustralia.com.au"], "email_raw": "service@unoxaustralia.com.au", "phone_disp": "P. 03 9876 0803", "phone_tel": "0398760803", "notes": "service app can be downloadable by cust"}, {"supplier": "UROPA", "link": "https://booking.mendrhub.com/?tenantid=0d95fb74-2828-43f0-9108-b91c9f874190&tid=0d95fb74-2828-43f0-9108-b91c9f874190", "emails": ["Warranties@Uropa.com.au"], "email_raw": "Warranties@Uropa.com.au", "phone_disp": "1300 225 960", "phone_tel": "1300225960", "notes": "cust must submit online form"}, {"supplier": "WILLIAM REFRIGERATION", "link": "", "emails": ["customersupport@williamsref.com.au"], "email_raw": "customersupport@williamsref.com.au", "phone_disp": "", "phone_tel": "", "notes": "EMAIL"}, {"supplier": "WINTERHALTER", "link": "https://au.winterhalter.com/service-calls/", "emails": ["service@winterhalter.com.au"], "email_raw": "service@winterhalter.com.au", "phone_disp": "02 9645 3221", "phone_tel": "0296453221", "notes": "EMAIL OR CALL only"}, {"supplier": "OTHER BRANDS (Support Request)", "link": "https://forms.wix.com/b4548ea7-9327-4276-8cf5-f3a633393615:a32f98f5-44d6-49f0-a144-bf623dfbd9f0", "emails": [], "email_raw": "", "phone_disp": "", "phone_tel": "", "notes": "For all remaining brands, submit a support request here."}];
 
 const I18N = {
-  zh: {
-    pageTitle: "厂家售后申请入口汇总",
-    title: "厂家售后申请入口汇总",
-    subtitle: "搜索厂家名称 / 邮箱 / 电话；点击“打开售后页面”进入对应厂家在线报修入口；邮箱/电话支持一键复制。",
-    searchPlaceholder: "输入厂家 / 邮箱 / 电话关键字…",
-    all: "全部",
-    emailOnly: "仅邮箱",
-    hasPhone: "有电话",
-    count: (n)=>`共 ${n} 条`,
-    groupHash: "#",
-    kLink: "售后链接",
-    kEmail: "邮箱",
-    kPhone: "电话",
-    openLinkText: "打开在线报修/售后页面",
-    btnOpen: "打开售后页面",
-    btnCopyEmail: "复制邮箱",
-    btnCopyPhone: "复制电话",
-    noMatch: "没有匹配结果。请更换关键字。",
-    copied: (t)=>`已复制：${t}`
-  },
   en: {
     pageTitle: "After-Sales Service Directory",
     title: "After-Sales Service Directory",
-    subtitle: "Search by supplier name, email, or phone. Click “Open Service Page” to access the supplier’s online service portal. Email/phone can be copied with one click.",
+    subtitle: "Search by supplier name, email, or phone. Click “Open Service Page” to access the supplier’s online service portal. If your brand is not listed, use the “Other Brands” support request.",
     searchPlaceholder: "Search supplier / email / phone…",
     all: "All",
     emailOnly: "Email Only",
@@ -161,13 +140,36 @@ const I18N = {
     btnCopyEmail: "Copy Email",
     btnCopyPhone: "Copy Phone",
     noMatch: "No results found. Try another keyword.",
-    copied: (t)=>`Copied: ${t}`
+    copied: (t)=>`Copied: ${t}`,
+    emailOnlyHint: "Email only"
+  },
+  zh: {
+    pageTitle: "厂家售后申请入口汇总",
+    title: "厂家售后申请入口汇总",
+    subtitle: "搜索厂家名称 / 邮箱 / 电话；点击“打开售后页面”进入对应厂家在线报修入口。若未找到品牌，请使用“其他品牌”协助售后申请入口。",
+    searchPlaceholder: "输入厂家 / 邮箱 / 电话关键字…",
+    all: "全部",
+    emailOnly: "仅邮箱",
+    hasPhone: "有电话",
+    count: (n)=>`共 ${n} 条`,
+    groupHash: "#",
+    kLink: "售后链接",
+    kEmail: "邮箱",
+    kPhone: "电话",
+    openLinkText: "打开在线报修/售后页面",
+    btnOpen: "打开售后页面",
+    btnCopyEmail: "复制邮箱",
+    btnCopyPhone: "复制电话",
+    noMatch: "没有匹配结果。请更换关键字。",
+    copied: (t)=>`已复制：${t}`,
+    emailOnlyHint: "仅邮箱"
   }
 };
 
 const $ = (id)=>document.getElementById(id);
 let currentFilter = "all";
-let lang = (localStorage.getItem("afterSalesLang") || (navigator.language||"").toLowerCase().startsWith("zh") ? "zh" : "en");
+// Default EN first, then allow switch to CN
+let lang = (localStorage.getItem("afterSalesLang") || "en");
 
 const toast = (msg)=>{
   const t = $("toast");
@@ -201,7 +203,9 @@ function groupByInitial(list){
     groups.get(key).push(item);
   }
   const keys = Array.from(groups.keys()).sort((a,b)=> a === I18N[lang].groupHash ? 1 : b === I18N[lang].groupHash ? -1 : a.localeCompare(b));
-  return keys.map(k => [k, groups.get(k)]);
+  // Keep OTHER BRANDS at end even when grouped
+  const ordered = keys.map(k => [k, groups.get(k)]);
+  return ordered;
 }
 
 function matches(item, q){
@@ -217,7 +221,7 @@ function passesFilter(item, filter){
   if (filter === "all") return true;
   if (filter === "emailOnly") {
     const n = (item.notes||"").toLowerCase();
-    return n.includes("email only") || n.includes("email-only") || n.includes("仅邮箱") || (item.phone_tel||"") === "";
+    return n.includes("email only") || n.includes("email-only") || n.includes("仅邮箱") || (item.phone_tel||"") === "" || (item.link||"") === "";
   }
   if (filter === "hasPhone") {
     return (item.phone_tel||"") !== "";
@@ -239,13 +243,25 @@ function escapeJs(s){
 
 function card(item){
   const T = I18N[lang];
-  const emails = (item.emails||[]).map(e=>`<a href="mailto:${e}">${e}</a>`).join("<br>")
+  const isOther = (item.supplier||"").toLowerCase().startsWith("other brands");
+  const linkOk = (item.link||"").startsWith("http");
+  const emailsArr = (item.emails||[]).filter(Boolean);
+  const emails = emailsArr.map(e=>`<a href="mailto:${e}">${e}</a>`).join("<br>")
     || (item.email_raw ? escapeHtml(item.email_raw) : `<span class="muted">—</span>`);
   const phoneLink = item.phone_tel ? `<a href="tel:${item.phone_tel}">${escapeHtml(item.phone_disp||item.phone_tel)}</a>`
     : (item.phone_disp ? escapeHtml(item.phone_disp) : `<span class="muted">—</span>`);
-  const note = item.notes ? `<div class="note">${escapeHtml(item.notes)}</div>` : "";
-  const copyEmailBtn = (item.emails||[]).length ? `<button class="btn" type="button" onclick="copyText('${escapeJs(item.emails.join(', '))}')">${escapeHtml(T.btnCopyEmail)}</button>` : "";
+
+  const note = item.notes ? `<div class="note">${escapeHtml(item.notes)}</div>` : (isOther ? `<div class="note">${escapeHtml(T.emailOnlyHint)} </div>` : "");
+  const copyEmailBtn = emailsArr.length ? `<button class="btn" type="button" onclick="copyText('${escapeJs(emailsArr.join(', '))}')">${escapeHtml(T.btnCopyEmail)}</button>` : "";
   const copyPhoneBtn = item.phone_tel ? `<button class="btn" type="button" onclick="copyText('${escapeJs(item.phone_tel)}')">${escapeHtml(T.btnCopyPhone)}</button>` : "";
+
+  const linkRow = linkOk
+    ? `<a href="${escapeHtml(item.link)}" target="_blank" rel="noopener">${escapeHtml(T.openLinkText)}</a>`
+    : `<span class="muted">—</span>`;
+
+  const openBtn = linkOk
+    ? `<button class="btn" type="button" onclick="window.open('${escapeJs(item.link)}','_blank')">${escapeHtml(T.btnOpen)}</button>`
+    : ``;
 
   return `
   <div class="card">
@@ -258,7 +274,7 @@ function card(item){
 
     <div class="kv">
       <div class="k">${escapeHtml(T.kLink)}</div>
-      <div class="v"><a href="${escapeHtml(item.link)}" target="_blank" rel="noopener">${escapeHtml(T.openLinkText)}</a></div>
+      <div class="v">${linkRow}</div>
 
       <div class="k">${escapeHtml(T.kEmail)}</div>
       <div class="v">${emails}</div>
@@ -268,7 +284,7 @@ function card(item){
     </div>
 
     <div class="actions">
-      <button class="btn" type="button" onclick="window.open('${escapeJs(item.link)}','_blank')">${escapeHtml(T.btnOpen)}</button>
+      ${openBtn}
       ${copyEmailBtn}
       ${copyPhoneBtn}
     </div>
